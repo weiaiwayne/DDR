@@ -43,7 +43,7 @@ def dic_vecs(dic_terms, model, num_features, model_word_set, filter_out=[]):
      representing that dimension. len(values) will equal num_features.
     '''
     agg_dic_vecs = collections.OrderedDict()
-    for k in dic_terms.iterkeys():
+    for k in iter(dic_terms.keys()): #changed from dic_terms.iterkeys(). Could also use dic_terms.keys()  #see https://www.python.org/dev/peps/pep-0469/
         agg_dic_vecs[k] = make_agg_vec(dic_terms[k], model = model, num_features = num_features,
                                          model_word_set = model_word_set, filter_out = filter_out)
 
