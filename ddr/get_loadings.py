@@ -36,10 +36,10 @@ def get_loadings(agg_doc_vecs_path, agg_dic_vecs_path, out_path, num_features, d
     dic_vecs = dic_vecs.to_dict(orient='list')
     nan_counter = {'ID': [], 'count': 0}
 
-    with open(agg_doc_vecs_path, 'rb') as doc_vecs, open(out_path, 'wb') as out_file:
+    with open(agg_doc_vecs_path, 'r') as doc_vecs, open(out_path, 'w') as out_file: #changed to 'r' and 'w' from 'rb' and 'wb' respectively
 
         doc_vecs_reader = csv.reader(doc_vecs, delimiter='\t')
-        doc_vecs_reader.next()
+        next(doc_vecs_reader) #changed from doc_vecs_reader.next() 
 
         writer = csv.writer(out_file, delimiter='\t')
         fieldnames_out = ['ID'] + list(dic_vecs.keys())
