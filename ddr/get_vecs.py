@@ -4,13 +4,13 @@ __author__ = 'Joe Hoover'
 
 import sys
 import numpy as np
-from load_terms import get_files
+from .load_terms import get_files #changed to make the script work in py3.6
 import os
 import collections
 import csv
-from file_length import file_len
+from .file_length import file_len #changed to make the script work in py3.6
 import pandas as pd
-from simple_progress_bar import update_progress
+from .simple_progress_bar import update_progress #changed to make the script work in py3.6
 
 
 def make_agg_vec(words, model, num_features, model_word_set, filter_out=[]):
