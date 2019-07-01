@@ -4,11 +4,11 @@ import numpy as np
 import logging
 import csv
 import time as tm
-import file_length
+from ddr import file_length #changed to make the script work in py3.6
 import pandas as pd
-from simple_progress_bar import update_progress
-
-from cosine_similarity import cos_similarity
+from .simple_progress_bar import update_progress #changed to make the script work in py3.6
+ 
+from .cosine_similarity import cos_similarity #changed to make the script work in py3.6
 
 
 datetime = tm.localtime()
