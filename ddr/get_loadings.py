@@ -59,7 +59,7 @@ def get_loadings(agg_doc_vecs_path, agg_dic_vecs_path, out_path, num_features, d
                 doc_id = doc_vec[0]
                 out_row = [doc_id]
 
-                for k in dic_vecs.iterkeys():
+                for k in dic_vecs.keys():
 
 
                     doc_vec = [np.float64(x) for x in doc_vec[-num_features:]]
