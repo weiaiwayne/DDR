@@ -90,12 +90,12 @@ def doc_vecs_from_csv(input_path, output_path, model, num_features, model_word_s
     object is returned.
     """
 
-    with open(input_path, 'rb') as docs_file, open(output_path, 'wb') as out_file:
+    with open(input_path, 'r') as docs_file, open(output_path, 'w') as out_file: #changed from 'rb', 'wb' to 'w'
 
         docs = csv.reader(docs_file, delimiter=delimiter, quotechar=quotechar)
 
         if header is True:
-            header = docs.next()
+            header = next(docs) #changed from docs.next()
             print(header)
 
             if id_col is not False:
@@ -128,7 +128,7 @@ def doc_vecs_from_csv(input_path, output_path, model, num_features, model_word_s
             except ValueError:
                 print("ValueError: Column '{0}' not found, please make sure that the index was correctly listed".format(text_col))
 
-        fieldnames = ['ID'] + [unicode(fnum) for fnum in range(1, num_features + 1)]
+        fieldnames = ['ID'] + [str(fnum) for fnum in range(1, num_features + 1)]
         writer = csv.writer(out_file, delimiter=delimiter, quotechar=quotechar)
         writer.writerow(fieldnames)
 
@@ -199,7 +199,7 @@ def doc_vecs_from_txt(input_path, output_path, num_features, model, model_word_s
 
     with open(output_path, 'wb') as out_file:
 
-        fieldnames = ['ID'] + [unicode(fnum) for fnum in range(1, num_features + 1)]
+        fieldnames = ['ID'] + [str(fnum) for fnum in range(1, num_features + 1)]
         writer = csv.writer(out_file, delimiter=delimiter)
         writer.writerow(fieldnames)
 
